@@ -115,17 +115,9 @@ const images = [
 interface CatCardProps {
   catObject: Cat;
   catIndex: number;
-  // name: string;
-  // species: string;
-  // favFoods: Array<string>;
-  // birthYear: number;
 }
 
 const CatCard: React.FC<CatCardProps> = (props) => {
-  // console.log(
-  //   "CatCard receiving props from App?! Come in App?! 😸 Props received are: ",
-  //   props
-  // );
   const { name, species, favFoods, birthYear } = props.catObject;
   const catImage = images[props.catIndex];
 
@@ -133,7 +125,9 @@ const CatCard: React.FC<CatCardProps> = (props) => {
     <div className="card">
       <h3 className="card__text card__header">{name}</h3>
       <p className="card__text">{species}</p>
-      <p className="card__text">{favFoods}</p>
+      <p className="card__text">
+        {favFoods.reduce((prev, curr) => prev + ", " + curr)}
+      </p>
       <p className="card__text">{birthYear}</p>
       {props.catIndex < images.length && (
         <CatImage

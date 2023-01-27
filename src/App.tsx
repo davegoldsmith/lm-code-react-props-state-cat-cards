@@ -7,18 +7,22 @@ import { useState } from "react";
 import Cat from "./data/cat";
 import catData  from "./data/cat-data";
 import CatCard from "./components/cat-card";
+import Dog from "./data/dog";
+import dogData from "./data/dog-data";
+import DogCard from "./components/dog-card";
 
 
 function App(): JSX.Element {
 
   const [cats, setCats] = useState<Array<Cat>>(catData);
-	const catCount = cats.length;
-	console.log("Cats tally = " + catCount);
+  const [dogs, setDogs] = useState<Array<Dog>>(dogData);
+	const catCount = cats.length; 
+  const dogCount = dogs.length; 
 
   return (
     <>
       <Navbar />
-      <Header catCount={catCount} />
+      <Header catCount={catCount} dogCount={dogCount} />
 
       <main>
         <div className="cards__wrapper">
@@ -34,6 +38,17 @@ function App(): JSX.Element {
             />
           ))}
         </div>
+        <div className="cards__wrapper">
+          {dogs.map((dog) => (
+            <DogCard
+							key={dog.id}
+              name={dog.name}
+              species={dog.species}
+              favFoods={dog.favFoods}
+              birthYear={dog.birthYear}
+            />
+          ))}
+        </div>        
       </main>
 
       <Footer />
