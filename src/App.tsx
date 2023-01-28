@@ -10,6 +10,7 @@ import CatCard from "./components/cat-card";
 import Dog from "./data/dog";
 import dogData from "./data/dog-data";
 import DogCard from "./components/dog-card";
+import AddCatDog from "./components/add-form";
 
 
 function App(): JSX.Element {
@@ -19,22 +20,31 @@ function App(): JSX.Element {
 	const catCount = cats.length; 
   const dogCount = dogs.length; 
 
+  const addNewCatDog = (animal: Cat | Dog, isCat : boolean) => {
+    console.log(animal);
+    animal.id = uuidv4();
+    if (isCat === true) {
+      setCats([...cats, animal]);
+    } else {
+      setDogs([...dogs, animal]);
+    }
+  };
+
   return (
     <>
       <Navbar />
       <Header catCount={catCount} dogCount={dogCount} />
 
       <main>
+        <div>
+          <AddCatDog addNewCatDog={(animal : Cat | Dog, isCat : boolean) => addNewCatDog(animal, isCat)}/>
+        </div>
         <div className="cards__wrapper">
           {cats.map((cat, index) => (
             <CatCard
 							key={cat.id}
 							catObject={cat}
 							catIndex={index}
-              // name={cat.name}
-              // species={cat.species}
-              // favFoods={cat.favFoods}
-              // birthYear={cat.birthYear}
             />
           ))}
         </div>

@@ -23,5 +23,5 @@ const dogData : Array<Dog> = [
 ];
 
 dogData.forEach(dog => dog.id = uuidv4());
-console.log(dogData); // each cat should now have a unique ID
+console.log(dogData); // each dog should now have a unique ID
 export default dogData;

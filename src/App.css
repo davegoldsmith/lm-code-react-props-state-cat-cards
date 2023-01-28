@@ -21,6 +21,18 @@ body {
 	display: flex;
 	justify-content: center;
 	margin: 0;
+	border: 
+}
+
+.add-animal__container {
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-direction: column;
+	box-shadow: 0 4px 8px 0 rgb(13, 59, 102, 0.4);
+	border:  2px solid var(--navy);
+	border-radius: 7px;
+	padding: 1rem;
 }
 
 .header__container {
