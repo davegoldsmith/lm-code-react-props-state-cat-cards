@@ -11,14 +11,14 @@ const AddCatDog: React.FC<AddCatDogProps> = (props) => {
     species: "",
     favFoods: Array<string>(),
     birthYear: 0,
-  }
+  };
   const [newAnimal, setNewAnimal] = useState(defaultAnimal);
 
   const [isCat, setIsCat] = useState(true);
 
   return (
     <div className="add-animal__container">
-      <div className="radio">
+      <div className="add-animal__radiogroup">
         <label>
           <input
             value="cat"
@@ -28,8 +28,6 @@ const AddCatDog: React.FC<AddCatDogProps> = (props) => {
           />
           Add new Cat
         </label>
-      </div>
-      <div className="radio">
         <label>
           <input
             type="radio"
@@ -41,9 +39,13 @@ const AddCatDog: React.FC<AddCatDogProps> = (props) => {
         </label>
       </div>
 
-      <label>
-        Name:
+      <div className="add-animal__input">
+        <label htmlFor="animal-name" className="add-animal__input-label">
+          Name:
+        </label>
         <input
+          name="animal-name"
+          className="add-animal__input-field"
           value={newAnimal.name}
           onChange={(e) => {
             setNewAnimal({
@@ -52,11 +54,15 @@ const AddCatDog: React.FC<AddCatDogProps> = (props) => {
             });
           }}
         />
-      </label>
+      </div>
 
-      <label>
-        Species:
+      <div className="add-animal__input">
+        <label htmlFor="animal-species" className="add-animal__input-label">
+          Species:
+        </label>
         <input
+          name="animal-species"
+          className="add-animal__input-field"
           value={newAnimal.species}
           onChange={(e) => {
             setNewAnimal({
@@ -65,11 +71,17 @@ const AddCatDog: React.FC<AddCatDogProps> = (props) => {
             });
           }}
         />
-      </label>
+      </div>
 
-      <label>
-        Favourite Foods:
-        <input
+      <div className="add-animal__input">
+        <label htmlFor="animal-favfoods" className="add-animal__input-label">
+          Favourite Foods:
+        </label>
+        <textarea
+          name="animal-favfoods"
+          rows={4}
+          cols={10}
+          className="add-animal__input-field"
           value={newAnimal.favFoods}
           onChange={(e) => {
             setNewAnimal({
@@ -78,22 +90,27 @@ const AddCatDog: React.FC<AddCatDogProps> = (props) => {
             });
           }}
         />
-      </label>
+      </div>
 
-      <label>
-        Birth Year:
+      <div className="add-animal__input">
+        <label htmlFor="animal-birthyear" className="add-animal__input-label">
+          Birth Year:
+        </label>
         <input
-          value={newAnimal.birthYear}
+          name="animal-birthyear"
+          className="add-animal__input-field"
+          value={newAnimal.birthYear === 0 ? "" : newAnimal.birthYear}
           onChange={(e) => {
             setNewAnimal({
               ...newAnimal,
-              birthYear: parseInt(e.target.value),
+              birthYear: e.target.value ? parseInt(e.target.value) : 0,
             });
           }}
         />
-      </label>
+      </div>
 
       <button
+        className="add-animal__btn"
         onClick={() => {
           props.addNewCatDog(newAnimal, isCat);
           setNewAnimal(defaultAnimal);
@@ -101,7 +118,7 @@ const AddCatDog: React.FC<AddCatDogProps> = (props) => {
       >
         Submit
       </button>
-      </div>
+    </div>
   );
 };
 

@@ -21,7 +21,6 @@ body {
 	display: flex;
 	justify-content: center;
 	margin: 0;
-	border: 
 }
 
 .add-animal__container {
@@ -33,6 +32,40 @@ body {
 	border:  2px solid var(--navy);
 	border-radius: 7px;
 	padding: 1rem;
+	font-family: 'SleepyCat';
+	font-size: 1.25rem;
+}
+
+.add-animal__radiogroup {
+	display: flex;
+	flex-direction: column;
+	width: 95%;
+	padding: 1rem;
+	border-bottom: 0.15rem solid var(--navy);
+}
+
+.add-animal__input {
+	display: flex;
+	justify-content: space-evenly;
+	flex-direction: row;
+}
+
+.add-animal__input-field{
+	min-width: 40rem;
+	padding: 0.25rem;
+	margin: 0.3rem;
+}
+
+.add-animal__input-label{
+	min-width: 10rem;
+	padding: 0.25rem;
+	margin: 0.3rem;
+}
+
+.add-animal__btn {
+	min-width: 10rem;
+	padding: 0.25rem;
+	margin: 0.3rem;
 }
 
 .header__container {
