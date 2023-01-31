@@ -13,10 +13,11 @@ const AddCatDog: React.FC<AddCatDogProps> = (props) => {
     birthYear: 0,
   };
   const [newAnimal, setNewAnimal] = useState(defaultAnimal);
-
   const [isCat, setIsCat] = useState(true);
 
   return (
+    // If I had more time, I would create new components
+    // for all the UI (luckily we get to practise that in the next assignment!)
     <div className="add-animal__container">
       <div className="add-animal__radiogroup">
         <label>
@@ -101,9 +102,18 @@ const AddCatDog: React.FC<AddCatDogProps> = (props) => {
           className="add-animal__input-field"
           value={newAnimal.birthYear === 0 ? "" : newAnimal.birthYear}
           onChange={(e) => {
+            // ensures that only numbers greater than 0
+            // can be entered
+            let value = 0;
+            if (e.target.value) {
+              value = parseInt(e.target.value);
+              if (isNaN(value)) {
+                value = 0;
+              }
+            }
             setNewAnimal({
               ...newAnimal,
-              birthYear: e.target.value ? parseInt(e.target.value) : 0,
+              birthYear: value,
             });
           }}
         />
